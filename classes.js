@@ -109,6 +109,36 @@ class Manager {
 */
 
 //Code Here
+class ProgressiveManager extends Manager {
+  constructor(first_name, last_name, email, age){
+    super(first_name, last_name, email, age);
+    this.title = 'Not a manager';
+    this.bonus = 0;
+  }
+  hire(employee) {
+    this.reports.push(employee);
+    this.updateTitle(this.reports.length);
+  }
+  fire(index){
+    this.reports.splice(index, 1);
+    this.bonus += 100;
+    this.updateTitle(this.reports.length);
+  }
+  updateTitle(n) {
+    // this.reports.length 
+    if (n === 0) {
+      this.title = 'Not a manager'
+    } else if (n < 4) {
+      this.title = 'Barely Manager'
+    } else if (n < 11) {
+      this.title = 'Mostly Manager'
+    } else if (n < 51) {
+      this.title = 'Manager'
+    } else if (n < 101) {
+      this.title = 'Manager Plus'
+    } else this.title = 'Bestest Manager'
+  }
+}
 
 
 
